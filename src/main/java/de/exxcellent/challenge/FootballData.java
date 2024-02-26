@@ -16,28 +16,28 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 // import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 
-public class WeatherData {
+public class FootballData {
     
 
-    public int getDayWithSmallestTempSpread(Path pPath){
-        int lDay = 0;
+    public String getTeamWithSmallestGoalSpread(Path pPath){
+        String lTeam = "";
 
         // read file and convert to weather object
-        List<Weather> lFileList = convertFileToList(pPath);
+        List<Football> lFileList = convertFileToList(pPath);
 
         // sort the list according to difference between mxt and mnt
         Collections.sort(lFileList);
 
         // get the first element of wList
-        lDay = lFileList.get(0).getcDay();
+        lTeam = lFileList.get(0).getcTeam();
 
-        return lDay;
+        return lTeam;
 
     }
 
-    private List<Weather> convertFileToList(Path pPath){
+    private List<Football> convertFileToList(Path pPath){
         String lExt = Utils.getFileExtension(pPath);
-        List<Weather> lObj = new ArrayList<>();
+        List<Football> lObj = new ArrayList<>();
 
         switch (lExt) {
             case Utils.EXT_CSV:          
@@ -56,8 +56,8 @@ public class WeatherData {
 
     }
 
-    private List<Weather> parseCSVToList(Path pPath){
-        List<Weather> lObj = new ArrayList<>();
+    private List<Football> parseCSVToList(Path pPath){
+        List<Football> lObj = new ArrayList<>();
         try (CSVReader reader = new CSVReader(new FileReader(pPath.toString()))) {
             // skip headers
             String[] headers = reader.readNext();
@@ -65,15 +65,15 @@ public class WeatherData {
 
             while ((nextLine = reader.readNext()) != null) {
 
-                int day = Integer.parseInt(nextLine[0]);
-                int lMaxTemp = Integer.parseInt(nextLine[1]);
-                int lMinTemp = Integer.parseInt(nextLine[2]);
+                String lTeam = nextLine[0];
+                int lGoals = Integer.parseInt(nextLine[5]);
+                int lGoalsAllowed = Integer.parseInt(nextLine[6]);
                 
                 // calculate difference between mxt and mnt
-                int diff = lMaxTemp - lMinTemp;
-
+                int diff = Math.abs(lGoals - lGoalsAllowed);
+        
                 // save in Weather object
-                Weather wObj = new Weather(day, lMaxTemp, lMinTemp, diff);
+                Football wObj = new Football(lTeam, lGoals, lGoalsAllowed, diff);
                 lObj.add(wObj);
             }
         } catch (IOException | CsvException e) {
@@ -83,23 +83,23 @@ public class WeatherData {
     }
 
      
-    private List<Weather> parseJSONToList(Path pPath){
-        List<Weather> lObj = new ArrayList<>();
+    private List<Football> parseJSONToList(Path pPath){
+        List<Football> lObj = new ArrayList<>();
          try {
             ObjectMapper mapper = new ObjectMapper();
-            List<Weather> weather = mapper.readValue(new File(pPath.toString()), mapper.getTypeFactory().constructCollectionType(List.class, Weather.class));
+            List<Football> football = mapper.readValue(new File(pPath.toString()), mapper.getTypeFactory().constructCollectionType(List.class, Football.class));
 
             // Now you have a List<Person> containing the objects from the JSON file
-            for (Weather w : weather) {
+            for (Football f : football) {
 
-                int day = w.getcDay();
-                int mxt = w.getcMxT();
-                int mnt = w.getcMnT();
+                String lTeam = f.getcTeam();
+                int lGoals = f.getcGoals();
+                int lGoalsAllowed = f.getcGoalsAllowed();
                 
                 // calculate difference between mxt and mnt
-                int diff = mxt - mnt;
+                int diff = Math.abs(lGoals - lGoalsAllowed);
 
-                Weather wObj = new Weather(day, mxt, mnt, diff);
+                Football wObj = new Football(lTeam, lGoals, lGoalsAllowed, diff);
                 lObj.add(wObj);
             }
         } catch (Exception e) {
@@ -109,6 +109,6 @@ public class WeatherData {
         return lObj;
     }
 
-    // private List<Weather> parseXMLToList(Path pPath){ ... }
+    // private List<Football> parseXMLToList(Path pPath){ ... }
 }
 
