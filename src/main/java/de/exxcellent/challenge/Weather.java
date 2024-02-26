@@ -26,7 +26,8 @@ public class Weather implements Comparable<Weather>{
     }
 
 
-
+    public Weather(){
+    }
 
     public Weather(int cDay, int cMxT,int cMnT, int diff){
         this.cDay = cDay;

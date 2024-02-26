@@ -1,6 +1,10 @@
 package de.exxcellent.challenge;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+
+import com.opencsv.exceptions.CsvValidationException;
 
 /**
  * The entry class for your solution. This class is only aimed as starting point and not intended as baseline for your software
@@ -13,8 +17,16 @@ public final class App {
     /**
      * This is the main entry method of your program.
      * @param args The CLI arguments passed
+     * @throws SecurityException 
+     * @throws NoSuchMethodException 
+     * @throws InvocationTargetException 
+     * @throws IllegalArgumentException 
+     * @throws IllegalAccessException 
+     * @throws InstantiationException 
+     * @throws IOException 
+     * @throws CsvValidationException 
      */
-    public static void main(String... args) {
+    public static void main(String... args) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, CsvValidationException, IOException {
 
         /**
          * WEATHER TASK PSEUDOCODE
