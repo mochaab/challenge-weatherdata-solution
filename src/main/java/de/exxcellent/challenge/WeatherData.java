@@ -65,15 +65,15 @@ public class WeatherData {
 
             while ((nextLine = reader.readNext()) != null) {
 
-                int day = Integer.parseInt(nextLine[0]);
+                int lDay = Integer.parseInt(nextLine[0]);
                 int lMaxTemp = Integer.parseInt(nextLine[1]);
                 int lMinTemp = Integer.parseInt(nextLine[2]);
                 
                 // calculate difference between mxt and mnt
-                int diff = lMaxTemp - lMinTemp;
+                int lDiff = lMaxTemp - lMinTemp;
 
                 // save in Weather object
-                Weather wObj = new Weather(day, lMaxTemp, lMinTemp, diff);
+                Weather wObj = new Weather(lDay, lMaxTemp, lMinTemp, lDiff);
                 lObj.add(wObj);
             }
         } catch (IOException | CsvException e) {
@@ -92,14 +92,14 @@ public class WeatherData {
             // Now you have a List<Person> containing the objects from the JSON file
             for (Weather w : weather) {
 
-                int day = w.getcDay();
-                int mxt = w.getcMxT();
-                int mnt = w.getcMnT();
+                int lDay = w.getcDay();
+                int lMaxTemp = w.getcMxT();
+                int lMinTemp = w.getcMnT();
                 
                 // calculate difference between mxt and mnt
-                int diff = mxt - mnt;
+                int lDiff = lMaxTemp - lMinTemp;
 
-                Weather wObj = new Weather(day, mxt, mnt, diff);
+                Weather wObj = new Weather(lDay, lMaxTemp, lMinTemp, lDiff);
                 lObj.add(wObj);
             }
         } catch (Exception e) {

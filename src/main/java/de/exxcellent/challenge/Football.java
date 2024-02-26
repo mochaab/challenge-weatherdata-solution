@@ -55,8 +55,8 @@ public class Football implements Comparable<Football>{
     }
 
 
-    public void setcTeam(String cTeam) {
-        this.cTeam = cTeam;
+    public void setcTeam(String pTeam) {
+        this.cTeam = pTeam;
     }
 
 
@@ -65,8 +65,8 @@ public class Football implements Comparable<Football>{
     }
 
 
-    public void setcGames(int cGames) {
-        this.cGames = cGames;
+    public void setcGames(int pGames) {
+        this.cGames = pGames;
     }
 
 
@@ -75,8 +75,8 @@ public class Football implements Comparable<Football>{
     }
 
 
-    public void setcWins(int cWins) {
-        this.cWins = cWins;
+    public void setcWins(int pWins) {
+        this.cWins = pWins;
     }
 
 
@@ -85,8 +85,8 @@ public class Football implements Comparable<Football>{
     }
 
 
-    public void setcLosses(int cLosses) {
-        this.cLosses = cLosses;
+    public void setcLosses(int pLosses) {
+        this.cLosses = pLosses;
     }
 
 
@@ -95,8 +95,8 @@ public class Football implements Comparable<Football>{
     }
 
 
-    public void setcDraws(int cDraws) {
-        this.cDraws = cDraws;
+    public void setcDraws(int pDraws) {
+        this.cDraws = pDraws;
     }
 
 
@@ -105,8 +105,8 @@ public class Football implements Comparable<Football>{
     }
 
 
-    public void setcGoals(int cGoals) {
-        this.cGoals = cGoals;
+    public void setcGoals(int pGoals) {
+        this.cGoals = pGoals;
     }
 
 
@@ -115,8 +115,8 @@ public class Football implements Comparable<Football>{
     }
 
 
-    public void setcGoalsAllowed(int cGoalsAllowed) {
-        this.cGoalsAllowed = cGoalsAllowed;
+    public void setcGoalsAllowed(int pGoalsAllowed) {
+        this.cGoalsAllowed = pGoalsAllowed;
     }
 
 
@@ -125,8 +125,8 @@ public class Football implements Comparable<Football>{
     }
 
 
-    public void setcPoints(int cPoints) {
-        this.cPoints = cPoints;
+    public void setcPoints(int pPoints) {
+        this.cPoints = pPoints;
     }
 
 
@@ -135,8 +135,8 @@ public class Football implements Comparable<Football>{
     }
 
 
-    public void setcDiff(int cDiff) {
-        this.cDiff = cDiff;
+    public void setcDiff(int pDiff) {
+        this.cDiff = pDiff;
     }
 
 
