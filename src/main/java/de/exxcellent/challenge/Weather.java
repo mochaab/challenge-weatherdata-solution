@@ -56,95 +56,96 @@ public class Weather implements Comparable<Weather>{
     }
 
 
-    public int getcDay() {
+    public int getDay() {
         return cDay;
     }
-    public void setcDay(int pDay) {
+    public void setDay(int pDay) {
         this.cDay = pDay;
     }
-    public int getcMxT() {
+    public int getMxT() {
         return cMxT;
     }
-    public void setcMxT(int pMxT) {
+    public void setMxT(int pMxT) {
         this.cMxT = pMxT;
     }
-    public int getcMnT() {
+    public int getMnT() {
         return cMnT;
     }
-    public void setcMnT(int pMnT) {
+    public void setMnT(int pMnT) {
         this.cMnT = pMnT;
     }
+    public int getAvT() {
+        return cAvT;
+    }
+    public void setAvT(int pAvT) {
+        this.cAvT = pAvT;
+    }
+    public double getAvDP() {
+        return cAvDP;
+    }
+    public void setAvDP(double pAvDP) {
+        this.cAvDP = pAvDP;
+    }
+    public int getHrPTPcpn() {
+        return c1HrPTPcpn;
+    }
+    public void setHrPTPcpn(int p1HrPTPcpn) {
+        this.c1HrPTPcpn = p1HrPTPcpn;
+    }
+    public int getPdir() {
+        return cPDir;
+    }
+    public void setPdir(int pPDir) {
+        this.cPDir = pPDir;
+    }
+    public double getAvSp() {
+        return cAvSp;
+    }
+    public void setAvSp(double pAvSp) {
+        this.cAvSp = pAvSp;
+    }
+    public double getDir() {
+        return cDir;
+    }
+    public void setDir(double pDir) {
+        this.cDir = pDir;
+    }
+    public int getMxS() {
+        return cMxS;
+    }
+    public void setMxS(int pMxS) {
+        this.cMxS = pMxS;
+    }
+    public int getSkyC() {
+        return cSkyC;
+    }
+    public void setSkyC(int pSkyC) {
+        this.cSkyC = pSkyC;
+    }
+    public double getMxR() {
+        return cMxR;
+    }
+    public void setMxR(double pMxR) {
+        this.cMxR = pMxR;
+    }
+    public int getMn() {
+        return cMn;
+    }
+    public void setMn(int pMn) {
+        this.cMn = pMn;
+    }
+    public double getRavSLP() {
+        return cRAvSLP;
+    }
+    public void setRavSLP(double pRAvSLP) {
+        this.cRAvSLP = pRAvSLP;
+    }
+
     public int getDiff() {
         return cDiff;
     }
     public void setDiff(int pDiff) {
         this.cDiff = pDiff;
-    }
-    public int getcAvT() {
-        return cAvT;
-    }
-    public void setcAvT(int pAvT) {
-        this.cAvT = pAvT;
-    }
-    public double getcAvDP() {
-        return cAvDP;
-    }
-    public void setcAvDP(double pAvDP) {
-        this.cAvDP = pAvDP;
-    }
-    public int getC1HrPTPcpn() {
-        return c1HrPTPcpn;
-    }
-    public void setC1HrPTPcpn(int p1HrPTPcpn) {
-        this.c1HrPTPcpn = p1HrPTPcpn;
-    }
-    public int getcPDir() {
-        return cPDir;
-    }
-    public void setcPDir(int pPDir) {
-        this.cPDir = pPDir;
-    }
-    public double getcAvSp() {
-        return cAvSp;
-    }
-    public void setcAvSp(double pAvSp) {
-        this.cAvSp = pAvSp;
-    }
-    public double getcDir() {
-        return cDir;
-    }
-    public void setcDir(double pDir) {
-        this.cDir = pDir;
-    }
-    public int getcMxS() {
-        return cMxS;
-    }
-    public void setcMxS(int pMxS) {
-        this.cMxS = pMxS;
-    }
-    public int getcSkyC() {
-        return cSkyC;
-    }
-    public void setcSkyC(int pSkyC) {
-        this.cSkyC = pSkyC;
-    }
-    public double getcMxR() {
-        return cMxR;
-    }
-    public void setcMxR(double pMxR) {
-        this.cMxR = pMxR;
-    }
-    public int getcMn() {
-        return cMn;
-    }
-    public void setcMn(int pMn) {
-        this.cMn = pMn;
-    }
-    public double getcRAvSLP() {
-        return cRAvSLP;
-    }
-    public void setcRAvSLP(double pRAvSLP) {
-        this.cRAvSLP = pRAvSLP;
     }
 
   

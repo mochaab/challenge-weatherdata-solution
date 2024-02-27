@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
+
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 // import com.fasterxml.jackson.dataformat.xml.XmlMapper;
@@ -29,7 +31,7 @@ public class WeatherData {
         Collections.sort(lFileList);
 
         // get the first element of wList
-        lDay = lFileList.get(0).getcDay();
+        lDay = lFileList.get(0).getDay();
 
         return lDay;
 
@@ -83,18 +85,27 @@ public class WeatherData {
     }
 
      
-    private List<Weather> parseJSONToList(Path pPath){
+    List<Weather> parseJSONToList(Path pPath){
         List<Weather> lObj = new ArrayList<>();
          try {
             ObjectMapper mapper = new ObjectMapper();
-            List<Weather> weather = mapper.readValue(new File(pPath.toString()), mapper.getTypeFactory().constructCollectionType(List.class, Weather.class));
+            // List<Weather> weather = mapper.readValue(new File(pPath.toString()), 
+            //                         mapper.getTypeFactory().constructCollectionType(List.class, 
+            //                                                                         Weather.class));
+
+            List<Weather> weather = mapper.readValue(new File(pPath.toString()), new TypeReference<List<Weather>>(){});
+            // String jsonArray = Utils.convertJsonFileToString(pPath.toString());
+            // List<Weather> weather = mapper.readValue(jsonArray, new TypeReference<List<Weather>>(){});
+            // List<Weather> weather = mapper.readValue(new File(pPath.toString()), Weather.class);
 
             // Now you have a List<Person> containing the objects from the JSON file
-            for (Weather w : weather) {
+            for (Weather w : weather) { 
 
-                int lDay = w.getcDay();
-                int lMaxTemp = w.getcMxT();
-                int lMinTemp = w.getcMnT();
+                int lDay = w.getDay();
+                int lMaxTemp = w.getMxT();
+                int lMinTemp = w.getMnT();
+
+                System.out.println(lDay+" "+lMaxTemp+" "+lMinTemp);
                 
                 // calculate difference between mxt and mnt
                 int lDiff = lMaxTemp - lMinTemp;
@@ -103,6 +114,7 @@ public class WeatherData {
                 lObj.add(wObj);
             }
         } catch (Exception e) {
+            
             e.printStackTrace();
         }
 

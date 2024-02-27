@@ -9,12 +9,17 @@ public class Config {
     private static final String USER_HOME = System.getProperty("user.home");
     private static final String USER_FOLDER = USER_HOME.concat("/Documents");
     private static final String PROJECT_RESOURCES = USER_FOLDER.concat("/CodingChallenge/programming-challenge/src/main/resources");
+    
     private static final String CSV_FILENAME_WEATHER = "weather.csv";
     private static final String CSV_FILENAME_FOOTBALL = "football.csv";
+    private static final String JSON_FILENAME_WEATHER = "weather.json";
+
+
 
     // Full paths constructions
     public static final Path PATH_WEATHER = Paths.get(buildPath(PROJECT_RESOURCES, "de/exxcellent/challenge", CSV_FILENAME_WEATHER));
     public static final Path PATH_FOOTHBALL = Paths.get(buildPath(PROJECT_RESOURCES, "de/exxcellent/challenge", CSV_FILENAME_FOOTBALL));
+    public static final Path PATH_WEATHER_JSON = Paths.get(buildPath(PROJECT_RESOURCES, "de/exxcellent/challenge", JSON_FILENAME_WEATHER));
 
     // Build path using variable number of components
    private static String buildPath(String... components) {

@@ -29,7 +29,7 @@ public class FootballData {
         Collections.sort(lFileList);
 
         // get the first element of wList
-        lTeam = lFileList.get(0).getcTeam();
+        lTeam = lFileList.get(0).getTeam();
 
         return lTeam;
 
@@ -92,9 +92,9 @@ public class FootballData {
             // Now you have a List<Person> containing the objects from the JSON file
             for (Football f : football) {
 
-                String lTeam = f.getcTeam();
-                int lGoals = f.getcGoals();
-                int lGoalsAllowed = f.getcGoalsAllowed();
+                String lTeam = f.getTeam();
+                int lGoals = f.getGoals();
+                int lGoalsAllowed = f.getGoalsAllowed();
                 
                 // calculate difference between mxt and mnt
                 int diff = Math.abs(lGoals - lGoalsAllowed);

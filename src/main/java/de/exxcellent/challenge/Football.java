@@ -50,92 +50,92 @@ public class Football implements Comparable<Football>{
 
     }
 
-    public String getcTeam() {
+    public String getTeam() {
         return cTeam;
     }
 
 
-    public void setcTeam(String pTeam) {
+    public void setTeam(String pTeam) {
         this.cTeam = pTeam;
     }
 
 
-    public int getcGames() {
+    public int getGames() {
         return cGames;
     }
 
 
-    public void setcGames(int pGames) {
+    public void setGames(int pGames) {
         this.cGames = pGames;
     }
 
 
-    public int getcWins() {
+    public int getWins() {
         return cWins;
     }
 
 
-    public void setcWins(int pWins) {
+    public void setWins(int pWins) {
         this.cWins = pWins;
     }
 
 
-    public int getcLosses() {
+    public int getLosses() {
         return cLosses;
     }
 
 
-    public void setcLosses(int pLosses) {
+    public void setLosses(int pLosses) {
         this.cLosses = pLosses;
     }
 
 
-    public int getcDraws() {
+    public int getDraws() {
         return cDraws;
     }
 
 
-    public void setcDraws(int pDraws) {
+    public void setDraws(int pDraws) {
         this.cDraws = pDraws;
     }
 
 
-    public int getcGoals() {
+    public int getGoals() {
         return cGoals;
     }
 
 
-    public void setcGoals(int pGoals) {
+    public void setGoals(int pGoals) {
         this.cGoals = pGoals;
     }
 
 
-    public int getcGoalsAllowed() {
+    public int getGoalsAllowed() {
         return cGoalsAllowed;
     }
 
 
-    public void setcGoalsAllowed(int pGoalsAllowed) {
+    public void setGoalsAllowed(int pGoalsAllowed) {
         this.cGoalsAllowed = pGoalsAllowed;
     }
 
 
-    public int getcPoints() {
+    public int getPoints() {
         return cPoints;
     }
 
 
-    public void setcPoints(int pPoints) {
+    public void setPoints(int pPoints) {
         this.cPoints = pPoints;
     }
 
 
-    public int getcDiff() {
+    public int getDiff() {
         return cDiff;
     }
 
 
-    public void setcDiff(int pDiff) {
+    public void setDiff(int pDiff) {
         this.cDiff = pDiff;
     }
 

@@ -4,9 +4,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.fasterxml.jackson.core.JsonParseException;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+
+import java.util.List;
+
 
 /**
  * Example JUnit 5 test case.
@@ -26,9 +33,13 @@ class AppTest {
         footballData = new FootballData();
         
     }
+
+    @Test
+    void aPointlessTest() {
+        assertEquals("successful", successLabel, "My expectations were not met");
+    }
     
     @Test 
-    @DisplayName("Day with lowest temperature")
     void testGetDayWithSmallestTempSpread(){
         assertEquals(14,weatherData.getDayWithSmallestTempSpread(
             Config.PATH_WEATHER
@@ -43,9 +54,23 @@ class AppTest {
     }
 
     @Test
-    void aPointlessTest() {
-        assertEquals("successful", successLabel, "My expectations were not met");
+    void testParseJSONDataWeather(){
+        List<Weather> weatherList = weatherData.parseJSONToList(Config.PATH_WEATHER_JSON);
+        
+        // Assertions on the returned list
+        assertNotNull(weatherList);
+        assertFalse(weatherList.isEmpty());
+        assertEquals(30, weatherList.size());
+
+        for(Weather weather: weatherList){
+            assertNotNull(weather);
+        }
     }
+
+    // @Test
+    // void testParseJSONDataFootball(){
+    //    // to process JSON DATA football
+    // }
 
     @Test
     void runWeather() {
