@@ -3,6 +3,11 @@ package de.exxcellent.challenge;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+
+/**
+ * The Config class represents a configuration utility for managing file paths
+ * and constants used throughout the application.
+ */
 public class Config {
 
     // Define constant paths
@@ -10,8 +15,12 @@ public class Config {
     private static final String USER_FOLDER = USER_HOME.concat("/Documents");
     private static final String PROJECT_RESOURCES = USER_FOLDER.concat("/CodingChallenge/programming-challenge/src/main/resources");
     
+    // CSV Files
     private static final String CSV_FILENAME_WEATHER = "weather.csv";
     private static final String CSV_FILENAME_FOOTBALL = "football.csv";
+   
+
+    // JSON Files
     private static final String JSON_FILENAME_WEATHER = "weather.json";
     private static final String JSON_FILENAME_FOOTBALL = "football.json";
 

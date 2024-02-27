@@ -17,10 +17,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 // import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
-
+/** 
+* Represents list of football data
+*/
 public class FootballData {
     
-
+    /** 
+     * Returns the team name with smallest distance between goals and goalsAllowed
+     * 
+     * @param pPath path of the source file
+     * @return int
+     */
     public String getTeamWithSmallestGoalSpread(Path pPath){
         String lTeam = "";
 
@@ -37,6 +44,12 @@ public class FootballData {
 
     }
 
+     /** 
+     * Reads file and parse according to file type
+     * 
+     * @param pPath path of the source file
+     * @return List<Football> List of football data
+     */
     public List<Football> convertFileToList(Path pPath){
         String lExt = Utils.getFileExtension(pPath);
         List<Football> lObj = new ArrayList<>();
@@ -58,18 +71,24 @@ public class FootballData {
 
     }
 
+    /** 
+     * Read csv file and map csv values to object
+     * 
+     * @param pPath path of the source file
+     * @return List<Football> List of football data
+     */
     public List<Football> parseCSVToList(Path pPath){
         List<Football> lObj = new ArrayList<>();
         try (CSVReader reader = new CSVReader(new FileReader(pPath.toString()))) {
             // skip headers
-            String[] headers = reader.readNext();
-            String[] nextLine;
+            String[] lHeaders = reader.readNext();
+            String[] lNextLine;
 
-            while ((nextLine = reader.readNext()) != null) {
+            while ((lNextLine = reader.readNext()) != null) {
 
-                String lTeam = nextLine[0];
-                int lGoals = Integer.parseInt(nextLine[5]);
-                int lGoalsAllowed = Integer.parseInt(nextLine[6]);
+                String lTeam = lNextLine[0];
+                int lGoals = Integer.parseInt(lNextLine[5]);
+                int lGoalsAllowed = Integer.parseInt(lNextLine[6]);
                 
                 // calculate difference between mxt and mnt
                 int diff = Math.abs(lGoals - lGoalsAllowed);
@@ -84,7 +103,12 @@ public class FootballData {
         return lObj;
     }
 
-     
+    /** 
+     * Read json file and map json values to object
+     * 
+     * @param pPath path of the source file
+     * @return List<Football> List of football data
+     */  
     public List<Football> parseJSONToList(Path pPath){
         List<Football> lObj = new ArrayList<>();
          try {

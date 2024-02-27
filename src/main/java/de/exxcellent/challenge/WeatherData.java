@@ -17,10 +17,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 // import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
+/** 
+* Represents list of weather data
+*/
 
 public class WeatherData {
+    private static final int MAX_VALUE = 100;
     
 
+    
+    /** 
+     * Returns day with smallest temperature
+     * 
+     * @param pPath path of the source file
+     * @return int
+     */
     public int getDayWithSmallestTempSpread(Path pPath){
         int lDay = 0;
 
@@ -37,6 +48,14 @@ public class WeatherData {
 
     }
 
+    
+    
+    /** 
+     * Returns mapped object values from the source file
+     * 
+     * @param pPath path of the source file
+     * @return List<Weather> List of weather data
+     */
     public List<Weather> convertFileToList(Path pPath){
         String lExt = Utils.getFileExtension(pPath);
         List<Weather> lObj = new ArrayList<>();
@@ -58,18 +77,26 @@ public class WeatherData {
 
     }
 
+    
+    
+    /** 
+     * Read csv file and map csv values to object
+     * 
+     * @param pPath path of the source file
+     * @return List<Weather> List of weather data
+     */
     public List<Weather> parseCSVToList(Path pPath){
         List<Weather> lObj = new ArrayList<>();
         try (CSVReader reader = new CSVReader(new FileReader(pPath.toString()))) {
             // skip headers
-            String[] headers = reader.readNext();
-            String[] nextLine;
+            String[] lHeaders = reader.readNext();
+            String[] lNextLine;
 
-            while ((nextLine = reader.readNext()) != null) {
+            while ((lNextLine = reader.readNext()) != null) {
 
-                int lDay = Integer.parseInt(nextLine[0]);
-                int lMaxTemp = Integer.parseInt(nextLine[1]);
-                int lMinTemp = Integer.parseInt(nextLine[2]);
+                int lDay = Integer.parseInt(lNextLine[0]);
+                int lMaxTemp = Integer.parseInt(lNextLine[1]);
+                int lMinTemp = Integer.parseInt(lNextLine[2]);
                 
                 // calculate difference between mxt and mnt
                 int lDiff = lMaxTemp - lMinTemp;
@@ -84,15 +111,22 @@ public class WeatherData {
         return lObj;
     }
 
-     
+      
+    
+    /** 
+     * Read json file and map json values to object
+     * 
+     * @param pPath path of the source file
+     * @return List<Weather> List of weather data
+     */
     public List<Weather> parseJSONToList(Path pPath){
         List<Weather> lObj = new ArrayList<>();
          try {
-            ObjectMapper mapper = new ObjectMapper();
-            List<Weather> weather = mapper.readValue(new File(pPath.toString()), new TypeReference<List<Weather>>(){});
+            ObjectMapper lMapper = new ObjectMapper();
+            List<Weather> lWeather = lMapper.readValue(new File(pPath.toString()), new TypeReference<List<Weather>>(){});
 
             // Now you have a List<Person> containing the objects from the JSON file
-            for (Weather w : weather) { 
+            for (Weather w : lWeather) { 
 
                 int lDay = w.getDay();
                 int lMaxTemp = w.getMxT();
