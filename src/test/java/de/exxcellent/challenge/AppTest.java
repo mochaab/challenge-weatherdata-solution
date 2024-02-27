@@ -67,10 +67,19 @@ class AppTest {
         }
     }
 
-    // @Test
-    // void testParseJSONDataFootball(){
-    //    // to process JSON DATA football
-    // }
+    @Test
+    void testParseJSONDataFootball(){
+        List<Football> footballList = footballData.parseJSONToList(Config.PATH_FOOTBALL_JSON);
+        
+        // Assertions on the returned list
+        assertNotNull(footballList);
+        assertFalse(footballList.isEmpty());
+        assertEquals(20, footballList.size());
+
+        for(Football football: footballList){
+            assertNotNull(football);
+        }
+    }
 
     @Test
     void runWeather() {

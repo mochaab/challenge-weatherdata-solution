@@ -13,6 +13,7 @@ public class Config {
     private static final String CSV_FILENAME_WEATHER = "weather.csv";
     private static final String CSV_FILENAME_FOOTBALL = "football.csv";
     private static final String JSON_FILENAME_WEATHER = "weather.json";
+    private static final String JSON_FILENAME_FOOTBALL = "football.json";
 
 
 
@@ -20,6 +21,7 @@ public class Config {
     public static final Path PATH_WEATHER = Paths.get(buildPath(PROJECT_RESOURCES, "de/exxcellent/challenge", CSV_FILENAME_WEATHER));
     public static final Path PATH_FOOTHBALL = Paths.get(buildPath(PROJECT_RESOURCES, "de/exxcellent/challenge", CSV_FILENAME_FOOTBALL));
     public static final Path PATH_WEATHER_JSON = Paths.get(buildPath(PROJECT_RESOURCES, "de/exxcellent/challenge", JSON_FILENAME_WEATHER));
+    public static final Path PATH_FOOTBALL_JSON = Paths.get(buildPath(PROJECT_RESOURCES, "de/exxcellent/challenge", JSON_FILENAME_FOOTBALL));
 
     // Build path using variable number of components
    private static String buildPath(String... components) {

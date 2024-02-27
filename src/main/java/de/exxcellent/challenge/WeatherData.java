@@ -37,7 +37,7 @@ public class WeatherData {
 
     }
 
-    private List<Weather> convertFileToList(Path pPath){
+    public List<Weather> convertFileToList(Path pPath){
         String lExt = Utils.getFileExtension(pPath);
         List<Weather> lObj = new ArrayList<>();
 
@@ -58,7 +58,7 @@ public class WeatherData {
 
     }
 
-    private List<Weather> parseCSVToList(Path pPath){
+    public List<Weather> parseCSVToList(Path pPath){
         List<Weather> lObj = new ArrayList<>();
         try (CSVReader reader = new CSVReader(new FileReader(pPath.toString()))) {
             // skip headers
@@ -85,18 +85,11 @@ public class WeatherData {
     }
 
      
-    List<Weather> parseJSONToList(Path pPath){
+    public List<Weather> parseJSONToList(Path pPath){
         List<Weather> lObj = new ArrayList<>();
          try {
             ObjectMapper mapper = new ObjectMapper();
-            // List<Weather> weather = mapper.readValue(new File(pPath.toString()), 
-            //                         mapper.getTypeFactory().constructCollectionType(List.class, 
-            //                                                                         Weather.class));
-
             List<Weather> weather = mapper.readValue(new File(pPath.toString()), new TypeReference<List<Weather>>(){});
-            // String jsonArray = Utils.convertJsonFileToString(pPath.toString());
-            // List<Weather> weather = mapper.readValue(jsonArray, new TypeReference<List<Weather>>(){});
-            // List<Weather> weather = mapper.readValue(new File(pPath.toString()), Weather.class);
 
             // Now you have a List<Person> containing the objects from the JSON file
             for (Weather w : weather) { 
@@ -104,8 +97,6 @@ public class WeatherData {
                 int lDay = w.getDay();
                 int lMaxTemp = w.getMxT();
                 int lMinTemp = w.getMnT();
-
-                System.out.println(lDay+" "+lMaxTemp+" "+lMinTemp);
                 
                 // calculate difference between mxt and mnt
                 int lDiff = lMaxTemp - lMinTemp;

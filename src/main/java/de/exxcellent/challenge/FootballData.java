@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
+
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 // import com.fasterxml.jackson.dataformat.xml.XmlMapper;
@@ -35,7 +37,7 @@ public class FootballData {
 
     }
 
-    private List<Football> convertFileToList(Path pPath){
+    public List<Football> convertFileToList(Path pPath){
         String lExt = Utils.getFileExtension(pPath);
         List<Football> lObj = new ArrayList<>();
 
@@ -56,7 +58,7 @@ public class FootballData {
 
     }
 
-    private List<Football> parseCSVToList(Path pPath){
+    public List<Football> parseCSVToList(Path pPath){
         List<Football> lObj = new ArrayList<>();
         try (CSVReader reader = new CSVReader(new FileReader(pPath.toString()))) {
             // skip headers
@@ -83,11 +85,12 @@ public class FootballData {
     }
 
      
-    private List<Football> parseJSONToList(Path pPath){
+    public List<Football> parseJSONToList(Path pPath){
         List<Football> lObj = new ArrayList<>();
          try {
             ObjectMapper mapper = new ObjectMapper();
-            List<Football> football = mapper.readValue(new File(pPath.toString()), mapper.getTypeFactory().constructCollectionType(List.class, Football.class));
+            List<Football> football = mapper.readValue(new File(pPath.toString()), new TypeReference<List<Football>>(){});
+
 
             // Now you have a List<Person> containing the objects from the JSON file
             for (Football f : football) {
