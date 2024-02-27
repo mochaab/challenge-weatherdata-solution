@@ -34,6 +34,11 @@ public class FootballData {
         // read file and convert to weather object
         List<Football> lFileList = convertFileToList(pPath);
 
+        // compute difference between maximum and minimum temperature
+        lFileList.forEach(football -> {
+            football.setDiff(Math.abs(football.getGoals()-football.getGoalsAllowed()));
+        });
+    
         // sort the list according to difference between mxt and mnt
         Collections.sort(lFileList);
 
@@ -41,7 +46,6 @@ public class FootballData {
         lTeam = lFileList.get(0).getTeam();
 
         return lTeam;
-
     }
 
      /** 
@@ -90,11 +94,8 @@ public class FootballData {
                 int lGoals = Integer.parseInt(lNextLine[5]);
                 int lGoalsAllowed = Integer.parseInt(lNextLine[6]);
                 
-                // calculate difference between mxt and mnt
-                int diff = Math.abs(lGoals - lGoalsAllowed);
-        
                 // save in Weather object
-                Football wObj = new Football(lTeam, lGoals, lGoalsAllowed, diff);
+                Football wObj = new Football(lTeam, lGoals, lGoalsAllowed);
                 lObj.add(wObj);
             }
         } catch (IOException | CsvException e) {
@@ -122,11 +123,8 @@ public class FootballData {
                 String lTeam = f.getTeam();
                 int lGoals = f.getGoals();
                 int lGoalsAllowed = f.getGoalsAllowed();
-                
-                // calculate difference between mxt and mnt
-                int diff = Math.abs(lGoals - lGoalsAllowed);
 
-                Football wObj = new Football(lTeam, lGoals, lGoalsAllowed, diff);
+                Football wObj = new Football(lTeam, lGoals, lGoalsAllowed);
                 lObj.add(wObj);
             }
         } catch (Exception e) {

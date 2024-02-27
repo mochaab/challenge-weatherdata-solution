@@ -43,11 +43,10 @@ public class Football implements Comparable<Football>{
      * @param pGoalsAllowed
      * @param pDiff
      */
-    public Football(String pTeam, int pGoals,int pGoalsAllowed, int pDiff){
+    public Football(String pTeam, int pGoals,int pGoalsAllowed){
         this.cTeam = pTeam;
         this.cGoals = pGoals;
         this.cGoalsAllowed = pGoalsAllowed;
-        this.cDiff = pDiff;
     }
 
 

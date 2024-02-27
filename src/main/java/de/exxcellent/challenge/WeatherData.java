@@ -38,6 +38,11 @@ public class WeatherData {
         // read file and convert to weather object
         List<Weather> lFileList = convertFileToList(pPath);
 
+        // compute difference between maximum and minimum temperature
+        lFileList.forEach(weather -> {
+            weather.setDiff(weather.getMxT()-weather.getMnT());
+        });
+
         // sort the list according to difference between mxt and mnt
         Collections.sort(lFileList);
 
@@ -51,7 +56,7 @@ public class WeatherData {
     
     
     /** 
-     * Returns mapped object values from the source file
+     * Reads file and parse according to file type
      * 
      * @param pPath path of the source file
      * @return List<Weather> List of weather data
@@ -88,21 +93,20 @@ public class WeatherData {
     public List<Weather> parseCSVToList(Path pPath){
         List<Weather> lObj = new ArrayList<>();
         try (CSVReader reader = new CSVReader(new FileReader(pPath.toString()))) {
-            // skip headers
+            // skip header
             String[] lHeaders = reader.readNext();
             String[] lNextLine;
 
             while ((lNextLine = reader.readNext()) != null) {
 
-                int lDay = Integer.parseInt(lNextLine[0]);
-                int lMaxTemp = Integer.parseInt(lNextLine[1]);
-                int lMinTemp = Integer.parseInt(lNextLine[2]);
-                
-                // calculate difference between mxt and mnt
-                int lDiff = lMaxTemp - lMinTemp;
+                // only 3 variables are specified for now
+                int lDay = Integer.parseInt(lNextLine[WeatherConstants.COL_INDECES.get(WeatherConstants.COL_NAME_DAY)]);
+                int lMaxTemp = Integer.parseInt(lNextLine[WeatherConstants.COL_INDECES.get(WeatherConstants.COL_NAME_MXT)]);
+                int lMinTemp = Integer.parseInt(lNextLine[WeatherConstants.COL_INDECES.get(WeatherConstants.COL_NAME_MNT)]);
+                // ...
 
-                // save in Weather object
-                Weather wObj = new Weather(lDay, lMaxTemp, lMinTemp, lDiff);
+                // store in weather object
+                Weather wObj = new Weather(lDay, lMaxTemp, lMinTemp);
                 lObj.add(wObj);
             }
         } catch (IOException | CsvException e) {
@@ -127,15 +131,14 @@ public class WeatherData {
 
             // Now you have a List<Person> containing the objects from the JSON file
             for (Weather w : lWeather) { 
-
+                
                 int lDay = w.getDay();
                 int lMaxTemp = w.getMxT();
                 int lMinTemp = w.getMnT();
-                
-                // calculate difference between mxt and mnt
-                int lDiff = lMaxTemp - lMinTemp;
+                // ...
 
-                Weather wObj = new Weather(lDay, lMaxTemp, lMinTemp, lDiff);
+                // store in weather object
+                Weather wObj = new Weather(lDay, lMaxTemp, lMinTemp);
                 lObj.add(wObj);
             }
         } catch (Exception e) {

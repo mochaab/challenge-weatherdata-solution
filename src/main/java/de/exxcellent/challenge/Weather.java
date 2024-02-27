@@ -50,11 +50,10 @@ public class Weather implements Comparable<Weather>{
      * @param pMnT minumum temperature
      * @param pDiff difference between maximum and minimum temperature
      */
-    public Weather(int pDay, int pMxT,int pMnT, int pDiff){
+    public Weather(int pDay, int pMxT,int pMnT){
         this.cDay = pDay;
         this.cMxT = pMxT;
         this.cMnT = pMnT;
-        this.cDiff = pDiff;
     }
 
     /**

@@ -45,8 +45,8 @@ class AppTest {
     @Test 
     void testGetTeamWithSmallestGoalSpread(){
         assertEquals("Aston_Villa",footballData.getTeamWithSmallestGoalSpread(
-            Config.PATH_FOOTHBALL
-        ), "Team should be Aston_Villa: " + footballData.getTeamWithSmallestGoalSpread(Config.PATH_FOOTHBALL));
+            Config.PATH_FOOTBALL
+        ), "Team should be Aston_Villa: " + footballData.getTeamWithSmallestGoalSpread(Config.PATH_FOOTBALL));
     }
 
     @Test
@@ -79,12 +79,12 @@ class AppTest {
 
     @Test
     void runWeather() {
-        App.main("--weather", Config.PATH_WEATHER);
+        App.main("--weather", Config.PATH_WEATHER_JSON);
     }
 
     @Test
     void runFootball() {
-        App.main("--football", Config.PATH_FOOTHBALL);
+        App.main("--football", Config.PATH_FOOTBALL_JSON);
     }
 
 }
