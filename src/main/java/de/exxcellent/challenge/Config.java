@@ -12,7 +12,8 @@ public class Config {
 
     // Define constant paths
     private static final String USER_HOME = System.getProperty("user.home");
-    private static final String USER_FOLDER = USER_HOME.concat("/Documents");
+    // private static final String USER_FOLDER = USER_HOME.concat("/Documents");
+    private static final String USER_FOLDER = USER_HOME.concat("");
     private static final String PROJECT_RESOURCES = USER_FOLDER.concat("/CodingChallenge/programming-challenge/src/main/resources");
     
     // CSV Files
