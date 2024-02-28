@@ -1,12 +1,9 @@
 package de.exxcellent.challenge;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 
-import com.opencsv.exceptions.CsvValidationException;
+
+
 
 /**
  * The entry class for your solution. This class is only aimed as starting point and not intended as baseline for your software
