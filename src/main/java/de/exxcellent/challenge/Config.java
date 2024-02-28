@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 /**
  * The Config class represents a configuration utility for managing file paths
  * and constants used throughout the application.
+ * 
+ * @author Charissa Morales <charissamorales.bscs@gmail.com>
  */
 public class Config {
 
@@ -24,6 +26,7 @@ public class Config {
     private static final String JSON_FILENAME_WEATHER = "weather.json";
     private static final String JSON_FILENAME_FOOTBALL = "football.json";
 
+    //
 
 
     // Full paths constructions

@@ -2,6 +2,8 @@ package de.exxcellent.challenge;
 
 /**
  * Represents Football Object with related variables
+ * 
+ * @author Charissa Morales <charissamorales.bscs@gmail.com>
  */
 
 public class Football implements Comparable<Football>{

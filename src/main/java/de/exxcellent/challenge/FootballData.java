@@ -19,6 +19,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /** 
 * Represents list of football data
+*
+* @author Charissa Morales <charissamorales.bscs@gmail.com>
 */
 public class FootballData {
     

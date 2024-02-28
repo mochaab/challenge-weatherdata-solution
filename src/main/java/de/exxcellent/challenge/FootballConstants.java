@@ -5,6 +5,8 @@ import java.util.Map;
 
 /** 
 * WeatherConstants class represents constants used for weather object
+* 
+* @author Charissa Morales <charissamorales.bscs@gmail.com>
 */
 public class FootballConstants {
 

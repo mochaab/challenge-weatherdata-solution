@@ -2,6 +2,8 @@ package de.exxcellent.challenge;
 
 /**
  * Represents Weather Object with related variables
+ * 
+ * @author Charissa Morales <charissamorales.bscs@gmail.com>
  */
 
 public class Weather implements Comparable<Weather>{

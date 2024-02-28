@@ -9,6 +9,8 @@ import java.nio.file.Paths;
 
 /**
  * General utility class that contains data processing functions
+ * 
+ * @author Charissa Morales <charissamorales.bscs@gmail.com>
  */
 public class Utils {
     public static final String EXT_CSV = "csv";

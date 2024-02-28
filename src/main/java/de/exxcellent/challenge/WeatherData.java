@@ -19,6 +19,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /** 
 * Represents list of weather data
+*
+* @author Charissa Morales <charissamorales.bscs@gmail.com>
 */
 
 public class WeatherData {
