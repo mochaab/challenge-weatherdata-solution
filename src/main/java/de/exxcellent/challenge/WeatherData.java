@@ -22,9 +22,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 */
 
 public class WeatherData {
-    private static final int MAX_VALUE = 100;
-    
-
     
     /** 
      * Returns day with smallest temperature
@@ -36,7 +33,7 @@ public class WeatherData {
         int lDay = 0;
 
         // read file and convert to weather object
-        List<Weather> lFileList = convertFileToList(pPath);
+        List<Weather> lFileList = parseBasedOnFileType(pPath);
 
         // compute difference between maximum and minimum temperature
         lFileList.forEach(weather -> {
@@ -61,7 +58,7 @@ public class WeatherData {
      * @param pPath path of the source file
      * @return List<Weather> List of weather data
      */
-    public List<Weather> convertFileToList(Path pPath){
+    public List<Weather> parseBasedOnFileType(Path pPath){
         String lExt = Utils.getFileExtension(pPath);
         List<Weather> lObj = new ArrayList<>();
 

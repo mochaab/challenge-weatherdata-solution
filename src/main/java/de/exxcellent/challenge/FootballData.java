@@ -32,7 +32,7 @@ public class FootballData {
         String lTeam = "";
 
         // read file and convert to weather object
-        List<Football> lFileList = convertFileToList(pPath);
+        List<Football> lFileList = parseBasedOnFileType(pPath);
 
         // compute difference between maximum and minimum temperature
         lFileList.forEach(football -> {
@@ -54,7 +54,7 @@ public class FootballData {
      * @param pPath path of the source file
      * @return List<Football> List of football data
      */
-    public List<Football> convertFileToList(Path pPath){
+    public List<Football> parseBasedOnFileType(Path pPath){
         String lExt = Utils.getFileExtension(pPath);
         List<Football> lObj = new ArrayList<>();
 
@@ -90,9 +90,10 @@ public class FootballData {
 
             while ((lNextLine = reader.readNext()) != null) {
 
-                String lTeam = lNextLine[0];
-                int lGoals = Integer.parseInt(lNextLine[5]);
-                int lGoalsAllowed = Integer.parseInt(lNextLine[6]);
+                String lTeam = lNextLine[FootballConstants.COL_INDECES.get(FootballConstants.COL_NAME_TEAM)];
+                int lGoals = Integer.parseInt(lNextLine[FootballConstants.COL_INDECES.get(FootballConstants.COL_NAME_GOALS)]);
+                int lGoalsAllowed = Integer.parseInt(lNextLine[FootballConstants.COL_INDECES.get(FootballConstants.COL_NAME_GOALS_ALLOWED)]);
+                // ...
                 
                 // save in Weather object
                 Football wObj = new Football(lTeam, lGoals, lGoalsAllowed);
@@ -109,7 +110,7 @@ public class FootballData {
      * 
      * @param pPath path of the source file
      * @return List<Football> List of football data
-     */  
+     */
     public List<Football> parseJSONToList(Path pPath){
         List<Football> lObj = new ArrayList<>();
          try {
@@ -123,6 +124,7 @@ public class FootballData {
                 String lTeam = f.getTeam();
                 int lGoals = f.getGoals();
                 int lGoalsAllowed = f.getGoalsAllowed();
+                // ...
 
                 Football wObj = new Football(lTeam, lGoals, lGoalsAllowed);
                 lObj.add(wObj);
@@ -133,6 +135,7 @@ public class FootballData {
 
         return lObj;
     }
+
 
     // private List<Football> parseXMLToList(Path pPath){ ... }
 }
